@@ -8,9 +8,9 @@
 
 (s/defschema ^:private BaseS3Config
   {:bucket                     s/Str
-   :path                       s/Str
 
-   (s/optional-key :aws-creds) AWSCreds})
+   (s/optional-key :aws-creds) AWSCreds
+   (s/optional-key :path)      s/Str})
 
 (s/defschema ^:private BaseDeployConfig
   (merge BaseS3Config
@@ -21,8 +21,7 @@
 
 (s/defschema LibraryDeployConfig
   (merge BaseDeployConfig
-         {:repository-name                s/Str
-          (s/optional-key :snapshots)     s/Bool
+         {(s/optional-key :snapshots)     s/Bool
           (s/optional-key :sign-releases) s/Bool
           (s/optional-key :checksum)      (s/enum :fail :warn :ignore)
           (s/optional-key :update)        (s/enum :daily :always :never)}))
