@@ -17,7 +17,8 @@
          {:type (s/enum :uberjar :library :directory)}))
 
 (s/defschema UberjarDeployConfig
-  BaseDeployConfig)
+  (merge BaseDeployConfig
+         {(s/optional-key :artifact-name) s/Str}))
 
 (s/defschema LibraryDeployConfig
   (merge BaseDeployConfig

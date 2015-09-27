@@ -10,6 +10,7 @@
                  [org.springframework.build/aws-maven "5.0.0.RELEASE"
                   :exclusions [joda-time]]
                  [funcool/cuerdas "0.6.0"]
+                 [me.raynes/fs "1.4.6"]
                  [joda-time "2.8.2"]
                  [prismatic/schema "1.0.1"]]
 
