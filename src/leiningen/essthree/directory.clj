@@ -1,6 +1,7 @@
 (ns leiningen.essthree.directory
   (:require [clojure.set :as c-set]
             [cuerdas.core :as c]
+            [leiningen.core.main :as main]
             [leiningen.essthree.s3 :as s3]
             [leiningen.essthree.schemas
              :refer [DirectoryDeployConfig]]
@@ -118,4 +119,5 @@
         s3-details    (bucket-object-details config)]
     (sync-locals! config local-details s3-details)
     (sync-s3! config local-details s3-details)
-    (sync-mutual-changes! config local-details s3-details)))
+    (sync-mutual-changes! config local-details s3-details)
+    (main/info "Deployed directory to S3")))

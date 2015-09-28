@@ -14,7 +14,7 @@
 
 (s/defschema ^:private BaseDeployConfig
   (merge BaseS3Config
-         {:type (s/enum :uberjar :library :directory)}))
+         {:type (s/enum :directory :library :uberjar)}))
 
 (s/defschema UberjarDeployConfig
   (merge BaseDeployConfig

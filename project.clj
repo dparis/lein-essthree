@@ -18,5 +18,4 @@
 
   :middleware [leiningen.essthree.repository/update-repositories]
 
-
   :eval-in-leiningen true)

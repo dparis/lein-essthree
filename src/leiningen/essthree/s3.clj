@@ -9,6 +9,12 @@
             [schema.core :as s]))
 
 
+(s/defn bucket-exists? :- s/Bool
+  [aws-creds :- (s/maybe AWSCreds)
+   bucket    :- s/Str]
+  (ac/with-credential aws-creds
+    (s3/does-bucket-exist bucket)))
+
 (s/defn list-objects
   [aws-creds :- (s/maybe AWSCreds)
    bucket    :- s/Str

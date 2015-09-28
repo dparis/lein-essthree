@@ -1,7 +1,8 @@
 (ns leiningen.essthree.library
   (:require [cuerdas.core :as c]
             [leiningen.deploy :as ld]
-            [leiningen.essthree.schemas :refer [LibraryDeployConfig]]
+            [leiningen.essthree.schemas
+             :refer [LibraryDeployConfig]]
             [leiningen.pom :as pom]
             [schema.core :as s]))
 
@@ -23,7 +24,7 @@
 
 (s/defschema ^:private DeployRepo
   (s/pair
-   (s/eq "essthree-repo")
+   (s/eq "essthree")
    "repo-name"
 
    {:url s/Str
@@ -32,24 +33,25 @@
    "repo-data"))
 
 (s/defn ^:private build-deploy-repo :- DeployRepo
-  [config :- LibraryDeployConfig
-   url    :- s/Str]
-  (let [repo-data {:url url}
+  [config         :- LibraryDeployConfig
+   build-category :- (s/enum "releases" "snapshots")]
+  (let [url       (build-repo-url config build-category)
+        lein-keys [:shapshots :sign-releases :checksum :update]
+        repo-data (merge {:url url} (select-keys config lein-keys))
         aws-creds (:aws-creds config)
         username  (or (:access-key-id aws-creds)
                       :env/aws_access_key_id)
         password  (or (:secret-access-key aws-creds)
                       :env/aws_secret_access_key)]
-    ["essthree-repo" (merge repo-data
-                            {:username username
-                             :password password})]))
+    ["essthree" (merge repo-data
+                       {:username username
+                        :password password})]))
 
 (defn deploy-library
   [project]
   (let [config          (get-config project)
         build-category  (if (pom/snapshot? project) "snapshots" "releases")
-        url             (build-repo-url config build-category)
-        deploy-repo     (build-deploy-repo config url)
+        deploy-repo     (build-deploy-repo config build-category)
         updated-project (update project :deploy-repositories
                                 conj deploy-repo)]
     (ld/deploy updated-project (first deploy-repo))))

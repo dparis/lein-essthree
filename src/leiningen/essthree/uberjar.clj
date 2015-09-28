@@ -1,12 +1,10 @@
 (ns leiningen.essthree.uberjar
-  (:require [amazonica.aws.s3 :as s3]
-            [clojure.java.io :as io]
-            [cuerdas.core :as c]
-            [leiningen.essthree.schemas :refer [UberjarDeployConfig]]
+  (:require [cuerdas.core :as c]
             [leiningen.core.main :as main]
+            [leiningen.essthree.s3 :as s3]
+            [leiningen.essthree.schemas :refer [UberjarDeployConfig]]
             [leiningen.pom :as pom]
             [leiningen.uberjar :as uj]
-            [me.raynes.fs :as fs]
             [schema.core :as s])
   (:import [com.amazonaws AmazonServiceException]))
 
@@ -31,21 +29,9 @@
                          (last (c/split uj-path "/")))
         obj-key      (->> [path project-name build-category uj-artifact]
                           (filter identity)
-                          (c/join "/"))
-        uj-size      (fs/size uj-path)
-        obj-metadata {:content-length uj-size}]
+                          (c/join "/"))]
     (try
-      (with-open [uj-inputstream (io/input-stream uj-path)]
-        (if-not (empty? aws-creds)
-          (s3/put-object aws-creds
-                         :bucket-name  bucket
-                         :key          obj-key
-                         :input-stream uj-inputstream
-                         :metadata     obj-metadata)
-          (s3/put-object :bucket-name  bucket
-                         :key          obj-key
-                         :input-stream uj-inputstream
-                         :metadata     obj-metadata)))
+      (s3/put-file! aws-creds bucket obj-key uj-path)
       (str bucket "/" obj-key)
       (catch AmazonServiceException e
         (main/abort "Uberjar upload to S3 failed with:"
