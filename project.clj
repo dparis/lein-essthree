@@ -12,6 +12,8 @@
                  [funcool/cuerdas "0.6.0"]
                  [me.raynes/fs "1.4.6"]
                  [joda-time "2.8.2"]
+                 [pandect "0.5.4"]
+                 [pathetic "0.5.1"]
                  [prismatic/schema "1.0.1"]]
 
   :eval-in-leiningen true)
