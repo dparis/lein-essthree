@@ -16,4 +16,7 @@
                  [pathetic "0.5.1"]
                  [prismatic/schema "1.0.1"]]
 
+  :middleware [leiningen.essthree.repository/update-repositories]
+
+
   :eval-in-leiningen true)

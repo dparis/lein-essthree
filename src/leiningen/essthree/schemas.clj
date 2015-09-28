@@ -39,7 +39,11 @@
    'valid-deploy-config?))
 
 (s/defschema RepoConfig
-  BaseS3Config)
+  (merge BaseS3Config
+         {(s/optional-key :snapshots)     s/Bool
+          (s/optional-key :sign-releases) s/Bool
+          (s/optional-key :checksum)      (s/enum :fail :warn :ignore)
+          (s/optional-key :update)        (s/enum :daily :always :never)}))
 
 (s/defschema EssthreeConfig
   {(s/optional-key :deploy)     DeployConfig
