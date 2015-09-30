@@ -16,9 +16,10 @@
                  [pathetic "0.5.1"]
                  [prismatic/schema "1.0.1"]]
 
+  :deploy-repositories [["releases" :clojars]]
+
   :profiles {:dev {:source-paths        ["dev"]
                    :repl-options        {:init-ns workbench}
-                   :dependencies        [[org.clojure/tools.namespace "0.2.11"]]
-                   :deploy-repositories [["releases" :clojars]]}}
+                   :dependencies        [[org.clojure/tools.namespace "0.2.11"]]}}
 
   :eval-in-leiningen true)
