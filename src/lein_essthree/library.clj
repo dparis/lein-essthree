@@ -61,6 +61,6 @@
   (let [config          (get-config project)
         build-category  (if (pom/snapshot? project) "snapshots" "releases")
         deploy-repo     (build-deploy-repo config build-category)
-        updated-project (update project :deploy-repositories
-                                conj deploy-repo)]
+        updated-project (update-in project [:deploy-repositories]
+                                   conj deploy-repo)]
     (ld/deploy updated-project (first deploy-repo))))
