@@ -55,9 +55,9 @@
   [project]
   (if-let [config (get-config project)]
     (-> project
-        (update :repositories conj
-                (build-repo config "snapshots"))
-        (update :repositories conj
-                (build-repo config "releases")))
+        (update-in [:repositories] conj
+                   (build-repo config "snapshots"))
+        (update-in [:repositories] conj
+                   (build-repo config "releases")))
 
     project))
