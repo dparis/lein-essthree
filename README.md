@@ -62,14 +62,14 @@ as possible, comparing MD5 checksums for all mutual files and only uploading
 those which have changed.
 
 ```clojure
-{:essthree
+:essthree
     {:deploy {:type       :directory
               :bucket     "essthree.directory-test"
               :local-root "essthree-local/"
               ;; :path       "test/path/"
               ;; :aws-creds  {:access-key-id     "access-key"
               ;;              :secret-access-key "secret-key"}
-              }}}
+              }}
 ```
 
 ### Library
@@ -84,7 +84,7 @@ All of the optional configuration parameters for `:deploy-repositories` are
 supported.
 
 ```clojure
-{:essthree
+:essthree
     {:deploy {:type          :library
               :bucket        "essthree.library-test"
               ;; :snapshots     true
@@ -94,7 +94,7 @@ supported.
               ;; :path          "test/path/"
               ;; :aws-creds     {:access-key-id     "access-key"
               ;;                 :secret-access-key "secret-key"}
-              }}}
+              }}
 ```
 
 ### Uberjar
@@ -106,14 +106,14 @@ the uberjar artifact will be uploaded to S3 with using the
 optionally overridden in the essthree config.
 
 ```clojure
-{:essthree
+:essthree
     {:deploy {:type          :uberjar
               :bucket        "essthree.uberjar-test"
               ;; :artifact-name "essthree-test.jar"
               ;; :path          "test/path/"
               ;; :aws-creds     {:access-key-id     "access-key"
               ;;                 :secret-access-key "secret-key"}
-              }}}
+              }}
 ```
 
 ### Repository
@@ -129,7 +129,7 @@ All of the optional configuration parameters for `:repositories` are
 supported.
 
 ```clojure
-{:essthree
+:essthree
     {:repository {:bucket        "essthree.repository-test"
                   ;; :snapshots     true
                   ;; :sign-releases true
@@ -138,7 +138,7 @@ supported.
                   ;; :path          "test/path/"
                   ;; :aws-creds     {:access-key-id     "access-key"
                   ;;                 :secret-access-key "secret-key"}
-                  }}}
+                  }}
 ```
 
 
