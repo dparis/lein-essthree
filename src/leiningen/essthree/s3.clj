@@ -1,4 +1,5 @@
 (ns leiningen.essthree.s3
+  "Thin S3 API wrappers."
   (:require [amazonica.aws.s3 :as s3]
             [amazonica.core :as ac]
             [clojure.java.io :as io]

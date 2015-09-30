@@ -1,4 +1,5 @@
 (ns leiningen.essthree.uberjar
+  "Deploy project as an application uberjar to S3."
   (:require [cuerdas.core :as c]
             [leiningen.core.main :as main]
             [leiningen.essthree.s3 :as s3]
@@ -39,6 +40,7 @@
 
 (defn deploy-uberjar
   [project]
+  "Deploy the current project as an application uberjar to S3."
   (let [config         (get-config project)
         build-category (if (pom/snapshot? project) "snapshots" "releases")
         project-name   (:name project)

@@ -1,5 +1,5 @@
 (defproject lein-essthree "0.1.0-SNAPSHOT"
-  :description "Leiningen plugin for easy S3 project deployment"
+  :description "Leiningen plugin for easy S3 project deployment and dependency resolution"
   :url "http://github.com/dparis/lein-essthree"
   :license {:name "MIT License"
             :url "http://opensource.org/licenses/MIT"}
@@ -15,6 +15,10 @@
                  [pandect "0.5.4"]
                  [pathetic "0.5.1"]
                  [prismatic/schema "1.0.1"]]
+
+  :profiles {:dev {:source-paths ["dev"]
+                   :repl-options {:init-ns workbench}
+                   :dependencies [[org.clojure/tools.namespace "0.2.11"]]}}
 
   :middleware [leiningen.essthree.repository/update-repositories]
 

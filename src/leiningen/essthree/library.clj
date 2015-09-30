@@ -1,4 +1,6 @@
 (ns leiningen.essthree.library
+  "Deploy project as a library JAR to S3 using the Spring framework
+  AWS maven library."
   (:require [cuerdas.core :as c]
             [leiningen.deploy :as ld]
             [leiningen.essthree.schemas
@@ -48,6 +50,10 @@
                         :password password})]))
 
 (defn deploy-library
+  "Deploy the current project as a library JAR to S3. Releases and snapshots
+  are handled similarly to `lein deploy`. Libraries deployed in this way can be
+  consumed by including essthree as a project plugin and specifying a
+  :repository configuration."
   [project]
   (let [config          (get-config project)
         build-category  (if (pom/snapshot? project) "snapshots" "releases")

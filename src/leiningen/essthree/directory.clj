@@ -1,4 +1,5 @@
 (ns leiningen.essthree.directory
+  "Deploy a local directory to S3."
   (:require [clojure.set :as c-set]
             [cuerdas.core :as c]
             [leiningen.core.main :as main]
@@ -113,6 +114,11 @@
       (s3/put-file! aws-creds bucket obj-key file-path))))
 
 (defn deploy-directory
+  "Deploy a local directory to S3. Will attempt to synchronize the local
+  directory to S3 using the fewest number of API calls possible. All local
+  additions will be added to S3, all files on S3 without a corresponding
+  local file will be deleted, and only files with differing checksums will
+  be updated."
   [project]
   (let [config        (get-config project)
         local-details (file-object-details config)

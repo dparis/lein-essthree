@@ -1,4 +1,5 @@
 (ns leiningen.essthree.schemas
+  "Schemas used by lein-essthree."
   (:require [schema.core :as s]))
 
 
@@ -16,9 +17,9 @@
   (merge BaseS3Config
          {:type (s/enum :directory :library :uberjar)}))
 
-(s/defschema UberjarDeployConfig
+(s/defschema DirectoryDeployConfig
   (merge BaseDeployConfig
-         {(s/optional-key :artifact-name) s/Str}))
+         {:local-root s/Str}))
 
 (s/defschema LibraryDeployConfig
   (merge BaseDeployConfig
@@ -27,15 +28,15 @@
           (s/optional-key :checksum)      (s/enum :fail :warn :ignore)
           (s/optional-key :update)        (s/enum :daily :always :never)}))
 
-(s/defschema DirectoryDeployConfig
+(s/defschema UberjarDeployConfig
   (merge BaseDeployConfig
-         {:local-root s/Str}))
+         {(s/optional-key :artifact-name) s/Str}))
 
 (s/defschema ^:private DeployConfig
   (s/conditional
-   #(= :uberjar (:type %))   UberjarDeployConfig
-   #(= :library (:type %))   LibraryDeployConfig
    #(= :directory (:type %)) DirectoryDeployConfig
+   #(= :library (:type %))   LibraryDeployConfig
+   #(= :uberjar (:type %))   UberjarDeployConfig
    'valid-deploy-config?))
 
 (s/defschema RepoConfig
