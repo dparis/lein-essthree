@@ -29,9 +29,10 @@
   [config :- DirectoryDeployConfig]
   (let [aws-creds (:aws-creds config)
         bucket    (:bucket config)
-        path      (-> (:path config)
-                      (c/trim "/")
-                      (pth/ensure-trailing-separator))
+        path      (when (:path config)
+                    (-> (:path config)
+                        (c/trim "/")
+                        (pth/ensure-trailing-separator)))
         objects   (s3/list-objects aws-creds bucket path)]
     (into {}
      (for [obj (:object-summaries objects)
