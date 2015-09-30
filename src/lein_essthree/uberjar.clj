@@ -4,7 +4,6 @@
             [leiningen.core.main :as main]
             [lein-essthree.s3 :as s3]
             [lein-essthree.schemas :refer [UberjarDeployConfig]]
-            [leiningen.pom :as pom]
             [leiningen.uberjar :as uj]
             [schema.core :as s])
   (:import [com.amazonaws AmazonServiceException]))
@@ -19,15 +18,14 @@
   (uj/uberjar project))
 
 (s/defn ^:private put-uberjar-s3! :- (s/maybe s/Str)
-  [config         :- UberjarDeployConfig
-   build-category :- (s/enum "snapshots" "releases")
-   uj-path        :- s/Str]
+  [config  :- UberjarDeployConfig
+   uj-path :- s/Str]
   (let [aws-creds    (:aws-creds config)
         bucket       (:bucket config)
         path         (c/trim (:path config) "/")
         uj-artifact  (or (:artifact-name config)
                          (last (c/split uj-path "/")))
-        obj-key      (->> [path build-category uj-artifact]
+        obj-key      (->> [path uj-artifact]
                           (filter identity)
                           (c/join "/"))]
     (try
@@ -40,9 +38,8 @@
 (defn deploy-uberjar
   [project]
   "Deploy the current project as an application uberjar to S3."
-  (let [config         (get-config project)
-        build-category (if (pom/snapshot? project) "snapshots" "releases")
-        uj-path        (compile-uberjar! project)
-        uj-obj         (put-uberjar-s3! config build-category uj-path)]
+  (let [config  (get-config project)
+        uj-path (compile-uberjar! project)
+        uj-obj  (put-uberjar-s3! config build-category uj-path)]
     (when uj-obj
       (main/info "Uploaded uberjar to" uj-obj))))

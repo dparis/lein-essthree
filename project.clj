@@ -18,8 +18,8 @@
 
   :deploy-repositories [["releases" :clojars]]
 
-  :profiles {:dev {:source-paths        ["dev"]
-                   :repl-options        {:init-ns workbench}
-                   :dependencies        [[org.clojure/tools.namespace "0.2.11"]]}}
+  :profiles {:dev {:source-paths ["dev"]
+                   :repl-options {:init-ns workbench}
+                   :dependencies [[org.clojure/tools.namespace "0.2.11"]]}}
 
   :eval-in-leiningen true)
