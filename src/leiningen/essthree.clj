@@ -14,8 +14,10 @@
 
 (s/defn ^:private valid-bucket? :- s/Bool
   [config]
-  (let [aws-creds (:aws-creds config)
-        bucket    (:bucket config)]
+  (let [aws-creds (or (get-in config [:deploy :aws-creds])
+                      (get-in config [:repository :aws-creds]))
+        bucket    (or (get-in config [:deploy :bucket])
+                      (get-in config [:repository :bucket]))]
     (s3/bucket-exists? aws-creds bucket)))
 
 (defn essthree
