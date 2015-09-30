@@ -20,6 +20,4 @@
                    :repl-options {:init-ns workbench}
                    :dependencies [[org.clojure/tools.namespace "0.2.11"]]}}
 
-  :middleware [leiningen.essthree.repository/update-repositories]
-
   :eval-in-leiningen true)

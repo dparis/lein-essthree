@@ -1,9 +1,9 @@
-(ns leiningen.essthree.library
+(ns lein-essthree.library
   "Deploy project as a library JAR to S3 using the Spring framework
   AWS maven library."
   (:require [cuerdas.core :as c]
             [leiningen.deploy :as ld]
-            [leiningen.essthree.schemas
+            [lein-essthree.schemas
              :refer [LibraryDeployConfig]]
             [leiningen.pom :as pom]
             [schema.core :as s]))

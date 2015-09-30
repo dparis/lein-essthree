@@ -1,10 +1,10 @@
-(ns leiningen.essthree.directory
+(ns lein-essthree.directory
   "Deploy a local directory to S3."
   (:require [clojure.set :as c-set]
             [cuerdas.core :as c]
             [leiningen.core.main :as main]
-            [leiningen.essthree.s3 :as s3]
-            [leiningen.essthree.schemas
+            [lein-essthree.s3 :as s3]
+            [lein-essthree.schemas
              :refer [DirectoryDeployConfig]]
             [me.raynes.fs :as fs]
             [pandect.core :as pd]

@@ -1,4 +1,4 @@
-(ns leiningen.essthree.schemas
+(ns lein-essthree.schemas
   "Schemas used by lein-essthree."
   (:require [schema.core :as s]))
 

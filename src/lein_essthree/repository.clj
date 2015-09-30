@@ -1,8 +1,8 @@
-(ns leiningen.essthree.repository
+(ns lein-essthree.repository
   "Middleware to update project repositories to include any
   configured S3 buckets."
   (:require [cuerdas.core :as c]
-            [leiningen.essthree.schemas
+            [lein-essthree.schemas
              :refer [RepoConfig]]
             [schema.core :as s]))
 

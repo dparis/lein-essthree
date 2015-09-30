@@ -1,10 +1,9 @@
 (ns leiningen.essthree
-  (:require [leiningen.essthree.directory :as ed]
-            [leiningen.essthree.library :as el]
-            [leiningen.essthree.s3 :as s3]
-            [leiningen.essthree.schemas :refer
-             [EssthreeConfig]]
-            [leiningen.essthree.uberjar :as eu]
+  (:require [lein-essthree.directory :as ed]
+            [lein-essthree.library :as el]
+            [lein-essthree.s3 :as s3]
+            [lein-essthree.schemas :refer [EssthreeConfig]]
+            [lein-essthree.uberjar :as eu]
             [leiningen.core.main :as main]
             [schema.core :as s]))
 

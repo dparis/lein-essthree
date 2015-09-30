@@ -1,9 +1,9 @@
-(ns leiningen.essthree.s3
+(ns lein-essthree.s3
   "Thin S3 API wrappers."
   (:require [amazonica.aws.s3 :as s3]
             [amazonica.core :as ac]
             [clojure.java.io :as io]
-            [leiningen.essthree.schemas
+            [lein-essthree.schemas
              :refer [AWSCreds]]
             [me.raynes.fs :as fs]
             [pathetic.core :as path]

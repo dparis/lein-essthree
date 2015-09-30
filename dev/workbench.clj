@@ -1,9 +1,9 @@
 (ns workbench
-  (:require [leiningen.core.project :as lp]
+  (:require [lein-essthree.directory :as ed]
+            [lein-essthree.library :as el]
+            [lein-essthree.uberjar :as eu]
+            [leiningen.core.project :as lp]
             [leiningen.essthree :as ess3]
-            [leiningen.essthree.directory :as ed]
-            [leiningen.essthree.library :as el]
-            [leiningen.essthree.uberjar :as eu]
             [repl]
             [schema.core :as s]))
 

@@ -1,9 +1,9 @@
-(ns leiningen.essthree.uberjar
+(ns lein-essthree.uberjar
   "Deploy project as an application uberjar to S3."
   (:require [cuerdas.core :as c]
             [leiningen.core.main :as main]
-            [leiningen.essthree.s3 :as s3]
-            [leiningen.essthree.schemas :refer [UberjarDeployConfig]]
+            [lein-essthree.s3 :as s3]
+            [lein-essthree.schemas :refer [UberjarDeployConfig]]
             [leiningen.pom :as pom]
             [leiningen.uberjar :as uj]
             [schema.core :as s])
