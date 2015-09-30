@@ -30,8 +30,11 @@
    "repo-name"
 
    {:url s/Str
-    (s/optional-key :username) s/Str
-    (s/optional-key :password) s/Str}
+    (s/optional-key :username)
+    (s/cond-pre s/Str (s/eq :env/aws_access_key_id))
+
+    (s/optional-key :password)
+    (s/cond-pre s/Str (s/eq :env/aws_secret_access_key))}
    "repo-data"))
 
 (s/defn ^:private build-deploy-repo :- DeployRepo
