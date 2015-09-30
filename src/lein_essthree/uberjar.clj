@@ -40,6 +40,6 @@
   "Deploy the current project as an application uberjar to S3."
   (let [config  (get-config project)
         uj-path (compile-uberjar! project)
-        uj-obj  (put-uberjar-s3! config build-category uj-path)]
+        uj-obj  (put-uberjar-s3! config uj-path)]
     (when uj-obj
       (main/info "Uploaded uberjar to" uj-obj))))
