@@ -44,7 +44,7 @@ lein-essthree is able to support all of the credential providers supported by
 the Java AWS SDK. See the [docs](http://docs.aws.amazon.com/AWSSdkDocsJava/latest/DeveloperGuide/credentials.html)
 for full details, but in short:
 
-1. Configuration in project.clj - `:essthree {:deploy {:access-key-id "access-key" :secret-access-key "secret-key"}}`
+1. Configuration in project.clj - `:essthree {:deploy {:aws-creds {:access-key-id "access-key-id" :secret-access-key "secret-access-key"}}}`
 2. Environment Variables – `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`
 3. Java System Properties – `aws.accessKeyId` and `aws.secretKey`
 4. The default credential profiles file – `~/.aws/credentials`
