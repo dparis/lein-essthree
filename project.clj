@@ -6,15 +6,17 @@
 
   :min-lein-version "2.0.0"
 
-  :dependencies [[joda-time "2.8.2"]
-                 [amazonica "0.3.33"]
+  :dependencies [[joda-time "2.9.3"]
+                 [amazonica "0.3.53" :exclusions [com.amazonaws/aws-java-sdk]]
+                 [com.amazonaws/aws-java-sdk-core "1.10.49"]
+                 [com.amazonaws/aws-java-sdk-s3 "1.10.49"]
                  [org.springframework.build/aws-maven "5.0.0.RELEASE"
                   :exclusions [joda-time]]
-                 [funcool/cuerdas "0.6.0"]
+                 [funcool/cuerdas "0.7.2"]
                  [me.raynes/fs "1.4.6"]
                  [pandect "0.5.4"]
                  [pathetic "0.5.1"]
-                 [prismatic/schema "1.0.1"]]
+                 [prismatic/schema "1.1.0"]]
 
   :deploy-repositories [["releases" :clojars]]
 
