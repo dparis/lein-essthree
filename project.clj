@@ -8,8 +8,8 @@
 
   :dependencies [[joda-time "2.9.3"]
                  [amazonica "0.3.53" :exclusions [com.amazonaws/aws-java-sdk]]
-                 [com.amazonaws/aws-java-sdk-core "1.10.49"]
-                 [com.amazonaws/aws-java-sdk-s3 "1.10.49"]
+                 [com.amazonaws/aws-java-sdk-core "1.10.77"]
+                 [com.amazonaws/aws-java-sdk-s3 "1.10.77"]
                  [org.springframework.build/aws-maven "5.0.0.RELEASE"
                   :exclusions [joda-time]]
                  [funcool/cuerdas "0.7.2"]
