@@ -10,7 +10,7 @@
                  [amazonica "0.3.53" :exclusions [com.amazonaws/aws-java-sdk]]
                  [com.amazonaws/aws-java-sdk-core "1.10.49"]
                  [com.amazonaws/aws-java-sdk-s3 "1.10.49"]
-                 [org.springframework.build/aws-maven "5.0.0.RELEASE"
+                 [org.clojars.brabster/aws-maven-fix "0.1.0"
                   :exclusions [joda-time]]
                  [funcool/cuerdas "0.7.2"]
                  [me.raynes/fs "1.4.6"]
