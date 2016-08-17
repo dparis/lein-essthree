@@ -7,7 +7,7 @@
   :min-lein-version "2.0.0"
 
   :dependencies [[joda-time "2.9.3"]
-                 [amazonica "0.3.53" :exclusions [com.amazonaws/aws-java-sdk]]
+                 [amazonica "0.3.74"]
                  [com.amazonaws/aws-java-sdk-core "1.10.49"]
                  [com.amazonaws/aws-java-sdk-s3 "1.10.49"]
                  [org.springframework.build/aws-maven "5.0.0.RELEASE"
