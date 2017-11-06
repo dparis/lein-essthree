@@ -2,7 +2,7 @@
   :description "Leiningen plugin for easy S3 project deployment and dependency resolution"
   :url "http://github.com/dparis/lein-essthree"
   :license {:name "MIT License"
-            :url "http://opensource.org/licenses/MIT"}
+            :url  "http://opensource.org/licenses/MIT"}
 
   :min-lein-version "2.0.0"
 
@@ -20,11 +20,22 @@
                  [pathetic "0.5.1"]
                  [prismatic/schema "1.1.7"]]
 
-  :deploy-repositories [["releases" :clojars]]
+  :release-tasks [["vcs" "assert-committed"]
+                  ["change" "version" "leiningen.release/bump-version" "release"]
+                  ["vcs" "commit"]
+                  ["vcs" "tag" "v" "--no-sign"]
+                  ["deploy" "clojars"]
+                  ["change" "version" "leiningen.release/bump-version"]
+                  ["vcs" "commit"]
+                  ["vcs" "push"]]
+
+  :deploy-repositories [["clojars" {:url           "https://clojars.org/repo"
+                                    :creds         :gpg
+                                    :sign-releases false}]]
 
   :profiles {:dev {:source-paths ["dev"]
                    :repl-options {:init-ns workbench}
-                   :dependencies []
-                   :plugins      [[lein-ancient "0.6.14"]]}}
+                   :plugins      [[lein-ancient "0.6.14"]
+                                  [lein-pprint "1.2.0"]]}}
 
   :eval-in-leiningen true)
