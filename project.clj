@@ -6,22 +6,25 @@
 
   :min-lein-version "2.0.0"
 
-  :dependencies [[joda-time "2.9.3"]
-                 [amazonica "0.3.53" :exclusions [com.amazonaws/aws-java-sdk]]
-                 [com.amazonaws/aws-java-sdk-core "1.10.49"]
-                 [com.amazonaws/aws-java-sdk-s3 "1.10.49"]
+  :dependencies [[joda-time "2.9.9"]
+                 [amazonica "0.3.113" :exclusions [com.amazonaws/aws-java-sdk
+                                                   com.amazonaws/amazon-kinesis-client]]
+                 [com.amazonaws/aws-java-sdk-core "1.11.202"]
+                 [com.amazonaws/aws-java-sdk-s3 "1.11.202"]
                  [org.springframework.build/aws-maven "5.0.0.RELEASE"
                   :exclusions [joda-time]]
-                 [funcool/cuerdas "0.7.2"]
+                 [commons-logging "1.2"]
+                 [funcool/cuerdas "2.0.4"]
                  [me.raynes/fs "1.4.6"]
-                 [pandect "0.5.4"]
+                 [pandect "0.6.1"]
                  [pathetic "0.5.1"]
-                 [prismatic/schema "1.1.0"]]
+                 [prismatic/schema "1.1.7"]]
 
   :deploy-repositories [["releases" :clojars]]
 
   :profiles {:dev {:source-paths ["dev"]
                    :repl-options {:init-ns workbench}
-                   :dependencies [[org.clojure/tools.namespace "0.2.11"]]}}
+                   :dependencies []
+                   :plugins      [[lein-ancient "0.6.14"]]}}
 
   :eval-in-leiningen true)
