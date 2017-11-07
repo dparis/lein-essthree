@@ -4,19 +4,22 @@
   :license {:name "MIT License"
             :url  "http://opensource.org/licenses/MIT"}
 
-  :min-lein-version "2.0.0"
+  :min-lein-version "2.8.1"
 
-  :dependencies [[joda-time "2.9.9"]
+  :dependencies [[com.amazonaws/aws-java-sdk-core "1.11.202"]
+                 [com.amazonaws/aws-java-sdk-s3 "1.11.202"]
+                 [org.clojure/tools.namespace "0.2.11"]
+                 [joda-time "2.9.9"]
+
                  [amazonica "0.3.113" :exclusions [com.amazonaws/aws-java-sdk
                                                    com.amazonaws/amazon-kinesis-client]]
-                 [com.amazonaws/aws-java-sdk-core "1.11.202"]
-                 [com.amazonaws/aws-java-sdk-s3 "1.11.202"]
                  [org.springframework.build/aws-maven "5.0.0.RELEASE"
-                  :exclusions [joda-time]]
+                  :exclusions [joda-time
+                               com.amazonaws/aws-java-sdk]]
                  [commons-logging "1.2"]
                  [funcool/cuerdas "2.0.4"]
+                 [digest "1.4.6"]
                  [me.raynes/fs "1.4.6"]
-                 [pandect "0.6.1"]
                  [pathetic "0.5.1"]
                  [prismatic/schema "1.1.7"]]
 

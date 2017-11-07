@@ -1,13 +1,14 @@
 (ns lein-essthree.directory
   "Deploy a local directory to S3."
-  (:require [clojure.set :as c-set]
+  (:require [clojure.java.io :as io]
+            [clojure.set :as c-set]
             [cuerdas.core :as c]
+            [digest :as d]
             [leiningen.core.main :as main]
             [lein-essthree.s3 :as s3]
             [lein-essthree.schemas
              :refer [DirectoryDeployConfig]]
             [me.raynes.fs :as fs]
-            [pandect.core :as pd]
             [pathetic.core :as pth]
             [schema.core :as s]))
 
@@ -56,8 +57,11 @@
                                 (pth/normalize (str rel-path "/" dir)))]]
                 [path {:type :dir}]))
      (into {} (for [file files
-                    :let [path (pth/normalize (str rel-path "/" file))]]
-                [path {:md5  (pd/md5-file (str root "/" file))
+                    :let [path   (pth/normalize (str rel-path "/" file))
+                          r-path (str root "/" file)
+                          md5    (with-open [f-is (io/input-stream r-path)]
+                                   (d/md5 f-is))]]
+                [path {:md5  md5
                        :type :file}])))))
 
 (s/defn ^:private file-object-details :- Details
