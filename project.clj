@@ -6,12 +6,12 @@
 
   :min-lein-version "2.8.1"
 
-  :dependencies [[com.amazonaws/aws-java-sdk-core "1.11.202"]
-                 [com.amazonaws/aws-java-sdk-s3 "1.11.202"]
+  :dependencies [[com.amazonaws/aws-java-sdk-core "1.11.787"]
+                 [com.amazonaws/aws-java-sdk-s3 "1.11.787"]
                  [org.clojure/tools.namespace "0.2.11"]
                  [joda-time "2.9.9"]
 
-                 [amazonica "0.3.113" :exclusions [com.amazonaws/aws-java-sdk
+                 [amazonica "0.3.152" :exclusions [com.amazonaws/aws-java-sdk
                                                    com.amazonaws/amazon-kinesis-client]]
                  [org.springframework.build/aws-maven "5.0.0.RELEASE"
                   :exclusions [joda-time
